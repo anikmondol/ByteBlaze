@@ -33,10 +33,10 @@ const Nav = () => {
                 <NavLink to='/' className="btn btn-ghost text-[28px] normal-case gap-0 text-secondary">Byte<span className="text-primary">Blaze</span></NavLink>
             </div>
             <div className="flex-none">
-                <ul className="menu menu-horizontal px-1 gap-4 text-[18px]">
-                    <NavLink to='/' className={({isActive}) => isActive ? "text-secondary font-bold" : "font-bold"}>Home</NavLink>
-                    <NavLink to="/blogs" className={({isActive}) => isActive ? "text-secondary font-bold" : "font-bold"}>Blogs</NavLink>
-                    <NavLink to="/bookmarks" className={({isActive}) => isActive ? "text-secondary font-bold" : "font-bold"}>Bookmarks</NavLink>
+                <ul className="menu menu-horizontal px-1 gap-5 text-[18px] hidden sm:flex">
+                    <NavLink to='/' className={({isActive}) => isActive ? "text-primary font-bold" : "font-bold"}>Home</NavLink>
+                    <NavLink to="/blogs" className={({isActive}) => isActive ? "text-primary font-bold" : "font-bold"}>Blogs</NavLink>
+                    <NavLink to="/bookmarks" className={({isActive}) => isActive ? "text-primary font-bold" : "font-bold"}>Bookmarks</NavLink>
                 </ul>
                 <label className="cursor-pointer grid place-items-center ml-5">
                     <input onChange={handleToggle} type="checkbox"  className="toggle theme-controller bg-base-content row-start-1 col-start-1 col-span-2" />
