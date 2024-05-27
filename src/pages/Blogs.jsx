@@ -35,7 +35,7 @@ const Blogs = () => {
             <div className="grid justify-center grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
                 
                 {
-                    blogs.map((blog, index) => <Blog key={index} blog={blog}></Blog>)
+                    blogs.slice(1, 19).map((blog, index) => <Blog key={index} blog={blog}></Blog>)
                 }
                 
                 
