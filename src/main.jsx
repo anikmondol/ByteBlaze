@@ -13,6 +13,9 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import BlogCard from './components/BlogCard'
+import Content from './components/Content'
+import Author from './components/Author'
+
 
 
 const router = createBrowserRouter([
@@ -31,13 +34,23 @@ const router = createBrowserRouter([
       {
         path: '/blogs',
         element: <Blogs></Blogs>,
-        loader: () => fetch('https://dev.to/api/articles?per_page=20&top=7'),
+        loader: () => fetch('https://dev.to/api/articles?per_page=21&top=7')
       },
       {
         path: 'blog/:id',
         element: <BlogCard></BlogCard>,
-        loader: ({ params }) =>
+         loader: ({ params }) =>
           fetch(`https://dev.to/api/articles/${params?.id}`),
+        children: [
+          {
+            index: true,
+            element: <Content></Content>
+          },
+          {
+            path: 'author',
+            element: <Author></Author>
+          },
+        ]
       },
     ]
   },
