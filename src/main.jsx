@@ -34,21 +34,25 @@ const router = createBrowserRouter([
       {
         path: '/blogs',
         element: <Blogs></Blogs>,
-        loader: () => fetch('https://dev.to/api/articles?per_page=21&top=7')
+        loader: () => fetch('https://dev.to/api/articles?per_page=20&top=7')
       },
       {
         path: 'blog/:id',
         element: <BlogCard></BlogCard>,
-         loader: ({ params }) =>
+        loader: ({ params }) =>
           fetch(`https://dev.to/api/articles/${params?.id}`),
         children: [
           {
             index: true,
-            element: <Content></Content>
+            element: <Content></Content>,
+            loader: ({ params }) =>
+              fetch(`https://dev.to/api/articles/${params?.id}`)
           },
           {
             path: 'author',
-            element: <Author></Author>
+            element: <Author></Author>,
+            loader: ({ params }) =>
+              fetch(`https://dev.to/api/articles/${params?.id}`)
           },
         ]
       },

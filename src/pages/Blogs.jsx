@@ -1,11 +1,15 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigation } from "react-router-dom";
 import Blog from "./Blog";
+import Loader from "../components/Loader";
 
 
 
 
 const Blogs = () => {
     const blogs = useLoaderData();
+    const navigation = useNavigation()
+    if (navigation.state === 'loading') return <Loader></Loader>
+    
     return (
         <section className=" px-4 sm:px-8 lg:px-12 py-8">
         <div className="container max-w-6xl py-6 mx-auto space-y-6 sm:space-y-12">
