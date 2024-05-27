@@ -1,15 +1,16 @@
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types'; // ES6
+import placeholderImage from '../assets/404.jpg'
 
 const Blog = ({ blog }) => {
-    const { cover_image, title, description, published_at } = blog;
+    const { cover_image, title, description, published_at, id } = blog;
     return (
-        <Link to="/" className="max-w-3xl px-6 py-16 mx-auto space-y-12 overflow-hidden">
-            <img role="presentation" className="object-cover w-full rounded h-44 dark:bg-gray-500" src="https://source.unsplash.com/random/480x360?4" />
+        <Link to={`/blog/${id}`} className="max-w-sm mx-auto transition border-2 p-2 hover:scale-105 border-opacity-30 border-primary hover:border-secondary  group hover:no-underline focus:no-underline">
+            <img role="presentation" className="object-cover w-full rounded h-44 dark:bg-gray-500" src={cover_image || placeholderImage} />
             <div className="p-6 space-y-2">
-                <h3 className="text-2xl font-semibold group-hover:underline group-focus:underline">In usu laoreet repudiare legendos</h3>
-                <span className="text-xs dark:text-gray-600">January 24, 2021</span>
-                <p>Mei ex aliquid eleifend forensibus, quo ad dicta apeirian neglegentur, ex has tantas percipit perfecto. At per tempor albucius perfecto, ei probatus consulatu patrioque mea, ei vocent delicata indoctum pri.</p>
+                <h3 className="text-2xl font-semibold group-hover:underline group-focus:underline">{title}</h3>
+                <span className="text-xs dark:text-gray-600">{new Date(published_at).toLocaleDateString()}</span>
+                <p>{description}</p>
             </div>
         </Link>
     );

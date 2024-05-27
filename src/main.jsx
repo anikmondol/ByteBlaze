@@ -12,6 +12,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import BlogCard from './components/BlogCard'
 
 
 const router = createBrowserRouter([
@@ -30,8 +31,14 @@ const router = createBrowserRouter([
       {
         path: '/blogs',
         element: <Blogs></Blogs>,
-        loader: () => fetch('https://dev.to/api/articles?per_page=21&top=7')
-      }
+        loader: () => fetch('https://dev.to/api/articles?per_page=20&top=7'),
+      },
+      {
+        path: 'blog/:id',
+        element: <BlogCard></BlogCard>,
+        loader: ({ params }) =>
+          fetch(`https://dev.to/api/articles/${params?.id}`),
+      },
     ]
   },
 ]);
